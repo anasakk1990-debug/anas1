@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A practical guide to the benefits of Microsoft Power BI for modern teams.">
+  <title>Why Power BI? | Smarter decisions, faster</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+    :root {
+      --ink: #17231d;
+      --muted: #647169;
+      --paper: #f5f7f1;
+      --white: #ffffff;
+      --lime: #d7ed68;
+      --green: #214b3a;
+      --orange: #e9774c;
+      --line: #dbe3d7;
+      --shadow: 0 18px 50px rgba(32, 63, 48, 0.1);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: 'DM Sans', sans-serif;
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(1120px, calc(100% - 48px)); margin: 0 auto; }
+
+    header {
+      padding: 28px 0;
+      border-bottom: 1px solid var(--line);
+      background: rgba(245, 247, 241, 0.9);
+    }
+    .nav { display: flex; justify-content: space-between; align-items: center; gap: 24px; }
+    .brand { display: flex; align-items: center; gap: 11px; font-family: 'Space Grotesk', sans-serif; font-weight: 700; }
+    .brand-mark { display: flex; align-items: end; gap: 3px; height: 24px; }
+    .brand-mark span { display: block; width: 6px; border-radius: 2px 2px 0 0; background: var(--orange); }
+    .brand-mark span:nth-child(1) { height: 11px; }
+    .brand-mark span:nth-child(2) { height: 17px; background: var(--green); }
+    .brand-mark span:nth-child(3) { height: 24px; background: var(--lime); border: 1px solid var(--green); }
+    .nav-links { display: flex; gap: 25px; color: var(--muted); font-size: 0.9rem; }
+    .nav-links a:hover { color: var(--ink); }
+
+    .hero { padding: 86px 0 72px; position: relative; overflow: hidden; }
+    .hero-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; align-items: center; gap: 75px; }
+    .eyebrow { color: var(--orange); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; }
+    h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; line-height: 1.08; margin: 0; }
+    h1 { max-width: 650px; margin-top: 16px; font-size: clamp(2.9rem, 6vw, 5.35rem); letter-spacing: -0.07em; }
+    .hero-copy { max-width: 550px; margin: 25px 0 31px; color: var(--muted); font-size: 1.08rem; }
+    .button { display: inline-flex; align-items: center; gap: 12px; padding: 13px 18px; border-radius: 3px; background: var(--green); color: var(--white); font-weight: 700; transition: transform 180ms ease, background 180ms ease; }
+    .button:hover { background: #16392b; transform: translateY(-2px); }
+    .button::after { content: '\2192'; font-size: 1.2rem; }
+
+    .visual { position: relative; min-height: 360px; }
+    .visual::before { content: ''; position: absolute; width: 310px; height: 310px; right: 12%; top: 4%; border-radius: 50%; background: var(--lime); }
+    .chart-card { position: absolute; top: 35px; left: 10px; width: 85%; padding: 26px; border: 1px solid rgba(33, 75, 58, 0.15); border-radius: 6px; background: var(--white); box-shadow: var(--shadow); transform: rotate(-3deg); }
+    .chart-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
+    .chart-title { font-family: 'Space Grotesk', sans-serif; font-weight: 700; }
+    .period { padding: 5px 8px; border-radius: 2px; background: #edf2e8; color: var(--muted); font-size: 0.7rem; }
+    .metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 9px; margin-bottom: 25px; }
+    .metric { padding: 10px; background: #f5f7f1; }
+    .metric strong { display: block; color: var(--green); font-family: 'Space Grotesk', sans-serif; font-size: 1.25rem; }
+    .metric small { color: var(--muted); font-size: 0.68rem; }
+    .bars { display: flex; align-items: end; gap: 10px; height: 110px; padding: 0 8px; border-bottom: 1px solid var(--line); }
+    .bar { flex: 1; background: var(--green); border-radius: 3px 3px 0 0; }
+    .bar:nth-child(2), .bar:nth-child(5) { background: var(--orange); }
+    .bar:nth-child(3), .bar:nth-child(6) { background: #95bd98; }
+    .float-note { position: absolute; right: -3px; bottom: 10px; width: 180px; padding: 17px; border-radius: 5px; background: var(--orange); color: white; box-shadow: var(--shadow); transform: rotate(4deg); }
+    .float-note strong { display: block; font-family: 'Space Grotesk', sans-serif; font-size: 1.55rem; }
+    .float-note span { font-size: 0.78rem; }
+
+    .section { padding: 84px 0; }
+    .section-intro { display: flex; justify-content: space-between; align-items: end; gap: 30px; margin-bottom: 38px; }
+    h2 { max-width: 560px; font-size: clamp(2rem, 4vw, 3.35rem); letter-spacing: -0.05em; }
+    .section-intro p { max-width: 340px; margin: 0; color: var(--muted); }
+    .benefit-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+    .benefit { min-height: 250px; padding: 27px; border-top: 3px solid var(--green); background: var(--white); box-shadow: 0 6px 25px rgba(32, 63, 48, 0.04); }
+    .benefit:nth-child(2) { border-color: var(--orange); }
+    .benefit:nth-child(3) { border-color: #9eba48; }
+    .benefit:nth-child(4) { border-color: #7aa4a0; }
+    .benefit:nth-child(5) { border-color: #ddad3e; }
+    .benefit:nth-child(6) { border-color: #a8849b; }
+    .icon { display: grid; place-items: center; width: 40px; height: 40px; margin-bottom: 25px; border-radius: 50%; background: #edf2e8; color: var(--green); font-size: 1.15rem; font-weight: 700; }
+    .benefit h3 { margin-bottom: 11px; font-size: 1.28rem; }
+    .benefit p { margin: 0; color: var(--muted); font-size: 0.94rem; }
+
+    .use-case { padding: 70px 0; background: var(--green); color: var(--white); }
+    .use-case .section-intro p { color: #c3d4c2; }
+    .use-case h2 { max-width: 690px; }
+    .use-case-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(255,255,255,0.2); }
+    .use-case-item { padding: 25px; background: var(--green); }
+    .use-case-item span { display: block; margin-bottom: 35px; color: var(--lime); font-family: 'Space Grotesk', sans-serif; font-size: 0.9rem; }
+    .use-case-item h3 { margin-bottom: 8px; font-size: 1.25rem; }
+    .use-case-item p { margin: 0; color: #c3d4c2; font-size: 0.9rem; }
+
+    .closing { padding: 90px 0; text-align: center; }
+    .closing h2 { max-width: 730px; margin: 0 auto 20px; }
+    .closing p { max-width: 510px; margin: 0 auto 28px; color: var(--muted); }
+    footer { padding: 22px 0; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.8rem; }
+    .footer-row { display: flex; justify-content: space-between; gap: 20px; }
+
+    @media (max-width: 760px) {
+      .container { width: min(100% - 32px, 560px); }
+      .nav-links { display: none; }
+      .hero { padding: 55px 0 35px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 25px; }
+      .visual { min-height: 320px; transform: scale(0.94); transform-origin: left top; }
+      .section { padding: 62px 0; }
+      .section-intro { display: block; }
+      .section-intro p { margin-top: 18px; }
+      .benefit-grid, .use-case-grid { grid-template-columns: 1fr; }
+      .benefit { min-height: auto; }
+      .footer-row { display: block; }
+      .footer-row span { display: block; margin-top: 7px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#top" aria-label="Power BI benefits home">
+        <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
+        <span>POWER BI / IN FOCUS</span>
+      </a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#benefits">Benefits</a>
+        <a href="#use-cases">Use cases</a>
+        <a href="#start">Get started</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">Business intelligence, made practical</span>
+          <h1>Turn scattered data into a clear next move.</h1>
+          <p class="hero-copy">Power BI helps teams connect information, spot what matters, and share decisions through interactive reports that everyone can understand.</p>
+          <a class="button" href="#benefits">Explore the benefits</a>
+        </div>
+        <div class="visual" aria-label="Illustration of a Power BI dashboard">
+          <div class="chart-card">
+            <div class="chart-top"><span class="chart-title">Performance overview</span><span class="period">This quarter</span></div>
+            <div class="metrics">
+              <div class="metric"><strong>84%</strong><small>Goal progress</small></div>
+              <div class="metric"><strong>+27%</strong><small>Growth</small></div>
+              <div class="metric"><strong>12.4k</strong><small>Customers</small></div>
+            </div>
+            <div class="bars" aria-hidden="true">
+              <span class="bar" style="height: 42%"></span><span class="bar" style="height: 57%"></span><span class="bar" style="height: 48%"></span><span class="bar" style="height: 74%"></span><span class="bar" style="height: 68%"></span><span class="bar" style="height: 92%"></span>
+            </div>
+          </div>
+          <div class="float-note"><strong>One view.</strong><span>Many better decisions.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="benefits">
+      <div class="container">
+        <div class="section-intro">
+          <h2>Why teams choose Power BI</h2>
+          <p>From the first connection to the final conversation, Power BI brings the decision-making workflow into focus.</p>
+        </div>
+        <div class="benefit-grid">
+          <article class="benefit"><div class="icon">01</div><h3>One source of truth</h3><p>Connect spreadsheets, databases, cloud services, and more in one reporting environment. Teams can work from consistent definitions and current information.</p></article>
+          <article class="benefit"><div class="icon">02</div><h3>See patterns faster</h3><p>Interactive charts and drill-down views help you move from a high-level result to the detail behind it without manually rebuilding reports.</p></article>
+          <article class="benefit"><div class="icon">03</div><h3>Decide with confidence</h3><p>Turn raw figures into context. Clear visual storytelling makes trends, risks, and opportunities easier to discuss with stakeholders.</p></article>
+          <article class="benefit"><div class="icon">04</div><h3>Share across the business</h3><p>Publish dashboards and reports so colleagues can access the same insights on their computer or mobile device, wherever work happens.</p></article>
+          <article class="benefit"><div class="icon">05</div><h3>Save valuable time</h3><p>Automated refreshes and reusable dashboards reduce repetitive manual reporting, giving analysts more time for meaningful analysis.</p></article>
+          <article class="benefit"><div class="icon">06</div><h3>Grow at your pace</h3><p>Start with a focused team dashboard and expand as your needs mature. Power BI supports both quick wins and organization-wide analytics.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="use-case" id="use-cases">
+      <div class="container">
+        <div class="section-intro">
+          <h2>Useful wherever decisions happen.</h2>
+          <p>Power BI adapts to the questions your teams ask every day.</p>
+        </div>
+        <div class="use-case-grid">
+          <article class="use-case-item"><span>01 / FINANCE</span><h3>Track the numbers</h3><p>Monitor budgets, revenue, costs, and forecasts in a shared financial picture.</p></article>
+          <article class="use-case-item"><span>02 / OPERATIONS</span><h3>Improve the flow</h3><p>Find bottlenecks, compare performance, and keep key processes moving.</p></article>
+          <article class="use-case-item"><span>03 / SALES</span><h3>Focus the team</h3><p>Understand pipeline health, customer behavior, and the actions most likely to convert.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="closing" id="start">
+      <div class="container">
+        <span class="eyebrow">The bottom line</span>
+        <h2>Better visibility creates better momentum.</h2>
+        <p>Power BI gives your organization a shared language for data, helping people spend less time searching for answers and more time acting on them.</p>
+        <a class="button" href="#top">Back to the beginning</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-row"><strong>POWER BI / IN FOCUS</strong><span>A concise guide to the value of business intelligence.</span></div>
+  </footer>
+</body>
+</html>
